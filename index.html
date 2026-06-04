@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaia — Parent Survey</title>
+<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Tell us about your kid and nature — takes 5 minutes. Your input shapes what we build.&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌</div>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  @media only screen and (max-width: 480px) {
+    .outer-table  { width: 100% !important; }
+    .body-td      { padding: 24px 20px !important; }
+    .header-td    { padding: 28px 20px 24px !important; }
+    .footer-td    { padding: 16px 20px !important; }
+    .headline     { font-size: 22px !important; }
+    .box-grid     { display: block !important; }
+    .box-card     { display: block !important; width: 100% !important; margin-bottom: 8px !important; }
+  }
+
+  /* ── Header shimmer ── */
+  @keyframes headerShimmer {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .header-bg {
+    background: linear-gradient(135deg, #1a3a2a 0%, #1f4a32 35%, #163322 65%, #1a3a2a 100%);
+    background-size: 300% 300%;
+    animation: headerShimmer 9s ease infinite;
+  }
+
+  /* ── Logo pulse ── */
+  @keyframes logoPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%       { transform: scale(1.12); opacity: 0.85; }
+  }
+  .logo-dot { animation: logoPulse 2.8s ease-in-out infinite; display: inline-block; }
+
+  /* ── CTA pulse ── */
+  @keyframes ctaPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(232,24,122,0.5); }
+    60%       { box-shadow: 0 0 0 14px rgba(232,24,122,0); }
+  }
+  .cta-btn {
+    animation: ctaPulse 2.4s ease-in-out infinite;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+  }
+  .cta-btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+
+  /* ── Diagram ── */
+  @keyframes nodePop { 0%{transform:scale(0.88);opacity:0.4} 70%{transform:scale(1.06)} 100%{transform:scale(1);opacity:1} }
+  @keyframes ringPulse { 0%,100%{opacity:0.7;r:34} 50%{opacity:0.3;r:38} }
+
+  .diag-node { cursor:pointer; transition:opacity 0.25s; }
+  .diag-node.dim  { opacity:0.28; }
+  .diag-node.lit  { opacity:1; }
+  .diag-node.idle { opacity:0.55; }
+  .diag-node-pop  { animation: nodePop 0.38s cubic-bezier(0.34,1.4,0.64,1) both; }
+</style>
+</head>
+<body style="margin:0;padding:24px 12px;background-color:#f0ede8;font-family:'DM Sans',sans-serif;">
+
+<!-- OUTER BORDER TABLE -->
+<table cellpadding="0" cellspacing="0" align="center" class="outer-table" style="max-width:560px;width:560px;border-collapse:collapse;background-color:#c8c0b4;border-radius:16px;">
+  <tr>
+    <td style="padding:1px;border-radius:16px;">
+      <table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;border-radius:15px;overflow:hidden;">
+
+        <!-- ── HEADER ── -->
+        <tr>
+          <td class="header-bg" style="padding:0;border-radius:15px 15px 0 0;overflow:hidden;">
+            <table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;background-color:transparent;">
+              <tr>
+                <td style="padding:32px 36px 32px;">
+
+                  <!-- Logo -->
+                  <table cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin-bottom:20px;">
+                    <tr>
+                      <td style="vertical-align:middle;">
+                        <span class="logo-dot" style="display:inline-block;width:24px;height:24px;background-color:#5dc87a;border-radius:100% 100% 100% 0;vertical-align:middle;"></span>
+                      </td>
+                      <td style="padding-left:9px;font-family:'DM Serif Display',serif;font-size:18px;color:#ffffff;vertical-align:middle;letter-spacing:0.02em;">Gaia</td>
+                    </tr>
+                  </table>
+
+                  <!-- CHANGE 1: eyebrow now reflects the survey ask, not "we need your help" -->
+                  <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5dc87a;margin-bottom:10px;">Parent survey · Ontario · 5 minutes</div>
+
+                  <!-- Headline -->
+                  <div class="headline" style="font-family:'DM Serif Display',serif;font-size:28px;line-height:1.25;color:#ffffff;font-weight:400;margin-bottom:14px;">
+                    How do your kids<br>
+                    <span style="font-style:italic;color:#a8e6b8;">connect with nature?</span>
+                  </div>
+
+                  <!-- CHANGE 2: new header subline — emotional hook, sets up the ask -->
+                  <div style="font-size:13px;color:#a8d4b8;line-height:1.6;font-weight:300;">
+                    We're building something for families like yours. Tell us about your child and we'll build it right.
+                  </div>
+
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- ── BODY ── -->
+        <tr>
+          <td class="body-td" style="background-color:#f7f4ef;padding:32px 40px;">
+
+            <!-- CHANGE 3: tightened opening — lead with the emotional angle, let the diagram handle the mechanics -->
+            <p style="font-size:14px;line-height:1.8;color:#3a3a3a;margin:0 0 24px;">
+              <strong style="color:#1a3a2a;font-weight:500;">Gaia</strong> is a companion toy for children aged 4–10 that connects them to a real plant. A sensor in the soil tracks the plant's health. A companion toy the child carries around changes expression when the plant needs attention. The child decides what to do. That's it.
+            </p>
+
+            <!-- HOW IT WORKS: professional dark horizontal flow diagram -->
+            <div id="diag-card" style="background:#1a2e22;border-radius:14px;margin-bottom:24px;padding:20px 20px 18px;position:relative;">
+
+              <!-- Header row -->
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+                <span style="font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#5dc87a;font-family:'DM Sans',sans-serif;">How it works</span>
+                <button id="diag-play-btn" onclick="diagTogglePlay()" style="display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.08);color:#a8d4b8;border:1px solid rgba(255,255,255,0.1);border-radius:20px;font-size:11px;font-family:'DM Sans',sans-serif;font-weight:500;padding:5px 12px;cursor:pointer;">
+                  <svg id="diag-play-icon" viewBox="0 0 10 10" fill="currentColor" style="width:9px;height:9px;"><rect x="2" y="1" width="2.5" height="8"/><rect x="5.5" y="1" width="2.5" height="8"/></svg>
+                  <span id="diag-play-label">Pause</span>
+                </button>
+              </div>
+
+              <!-- SVG: 5 nodes in a single horizontal row
+                   viewBox 480 x 140
+                   Node cx positions: 48, 144, 240, 336, 432  (spacing = 96)
+                   Node cy = 48, r = 28
+                   Connector line y=48 from x=76 to x=404
+                   Labels: title y=96, sub y=110
+              -->
+              <svg width="100%" viewBox="0 0 480 120" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible;">
+                <defs>
+                  <!-- Glow filter for active node -->
+                  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                  <!-- Travelling dot marker -->
+                  <marker id="dot-m" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="6" markerHeight="6">
+                    <circle cx="3" cy="3" r="2.5" fill="#5dc87a"/>
+                  </marker>
+                </defs>
+
+                <!-- ── Connector track segments (between node edges, not through centres) ── -->
+                <!-- Segment 1→2: from right edge of node1 (48+28=76) to left edge of node2 (144-28=116) -->
+                <line id="ds-12" x1="76" y1="48" x2="116" y2="48" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+                <!-- Segment 2→3: 144+28=172 to 240-28=212 -->
+                <line id="ds-23" x1="172" y1="48" x2="212" y2="48" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+                <!-- Segment 3→4: 240+28=268 to 336-28=308 -->
+                <line id="ds-34" x1="268" y1="48" x2="308" y2="48" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+                <!-- Segment 4→5: 336+28=364 to 432-28=404 -->
+                <line id="ds-45" x1="364" y1="48" x2="404" y2="48" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+
+                <!-- Active segments (green, revealed as steps progress) -->
+                <line id="da-12" x1="76" y1="48" x2="116" y2="48" stroke="#4aaa62" stroke-width="1.5" stroke-linecap="round" opacity="0"/>
+                <line id="da-23" x1="172" y1="48" x2="212" y2="48" stroke="#4aaa62" stroke-width="1.5" stroke-linecap="round" opacity="0"/>
+                <line id="da-34" x1="268" y1="48" x2="308" y2="48" stroke="#4aaa62" stroke-width="1.5" stroke-linecap="round" opacity="0"/>
+                <line id="da-45" x1="364" y1="48" x2="404" y2="48" stroke="#4aaa62" stroke-width="1.5" stroke-linecap="round" opacity="0"/>
+
+                <!-- ── NODE 1: Plant ── cx=48 -->
+                <g id="dn1" class="diag-node dim" onclick="diagJumpTo(1)" style="cursor:pointer;">
+                  <!-- ring (shown when active) -->
+                  <circle id="dn1-ring" cx="48" cy="48" r="34" fill="none" stroke="#4aaa62" stroke-width="1.5" opacity="0"/>
+                  <!-- bg circle -->
+                  <circle id="dn1-bg" cx="48" cy="48" r="28" fill="#243d2e"/>
+                  <!-- Plant icon: stem + 2 leaves -->
+                  <line x1="48" y1="60" x2="48" y2="44" stroke="#5dc87a" stroke-width="2" stroke-linecap="round"/>
+                  <ellipse cx="41" cy="43" rx="7" ry="4.5" fill="#4aaa62" transform="rotate(-30 41 43)"/>
+                  <ellipse cx="55" cy="40" rx="7" ry="4.5" fill="#5dc87a" transform="rotate(25 55 40)"/>
+                  <ellipse cx="48" cy="38" rx="6" ry="4" fill="#6dc87a" transform="rotate(0 48 38)"/>
+                  <!-- label -->
+                  <text x="48" y="92" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" fill="rgba(255,255,255,0.9)">Your plant</text>
+                  <text x="48" y="106" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,255,255,0.4)">Any plant</text>
+                </g>
+
+                <!-- ── NODE 2: Sensor ── cx=144 -->
+                <g id="dn2" class="diag-node dim" onclick="diagJumpTo(2)" style="cursor:pointer;">
+                  <circle id="dn2-ring" cx="144" cy="48" r="34" fill="none" stroke="#4aaa62" stroke-width="1.5" opacity="0"/>
+                  <circle id="dn2-bg" cx="144" cy="48" r="28" fill="#243d2e"/>
+                  <!-- Sensor icon: probe + signal arcs -->
+                  <rect x="141" y="44" width="6" height="16" rx="3" fill="#a8d4b8"/>
+                  <circle cx="144" cy="44" r="4" fill="#5dc87a"/>
+                  <circle cx="144" cy="44" r="2" fill="#1a2e22"/>
+                  <path d="M150 40 Q155 35 160 40" stroke="#5dc87a" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+                  <path d="M152 36 Q157 29 162 36" stroke="#5dc87a" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.4"/>
+                  <text x="144" y="92" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" fill="rgba(255,255,255,0.9)">The sensor</text>
+                  <text x="144" y="106" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,255,255,0.4)">In the soil</text>
+                </g>
+
+                <!-- ── NODE 3: Character ── cx=240 -->
+                <g id="dn3" class="diag-node dim" onclick="diagJumpTo(3)" style="cursor:pointer;">
+                  <circle id="dn3-ring" cx="240" cy="48" r="34" fill="none" stroke="#4aaa62" stroke-width="1.5" opacity="0"/>
+                  <circle id="dn3-bg" cx="240" cy="48" r="28" fill="#243d2e"/>
+                  <!-- Character face icon -->
+                  <circle cx="240" cy="47" r="14" fill="#c8bef0"/>
+                  <circle cx="235" cy="44" r="3" fill="#fff"/>
+                  <circle cx="245" cy="44" r="3" fill="#fff"/>
+                  <circle cx="235.8" cy="44.8" r="1.5" fill="#2a1a4a"/>
+                  <circle cx="245.8" cy="44.8" r="1.5" fill="#2a1a4a"/>
+                  <path d="M234 51 Q240 56 246 51" stroke="#2a1a4a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                  <!-- status light bar at bottom of face -->
+                  <rect x="234" y="57" width="12" height="2.5" rx="1.25" fill="#5dc87a"/>
+                  <text x="240" y="92" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" fill="rgba(255,255,255,0.9)">The character</text>
+                  <text x="240" y="106" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,255,255,0.4)">Reacts to plant</text>
+                </g>
+
+                <!-- ── NODE 4: Child ── cx=336 -->
+                <g id="dn4" class="diag-node dim" onclick="diagJumpTo(4)" style="cursor:pointer;">
+                  <circle id="dn4-ring" cx="336" cy="48" r="34" fill="none" stroke="#4aaa62" stroke-width="1.5" opacity="0"/>
+                  <circle id="dn4-bg" cx="336" cy="48" r="28" fill="#243d2e"/>
+                  <!-- Child icon: head + body -->
+                  <circle cx="336" cy="41" r="10" fill="#e0a870"/>
+                  <ellipse cx="336" cy="30" rx="9" ry="5.5" fill="#5a3818"/>
+                  <ellipse cx="329" cy="33" rx="3.5" ry="5.5" fill="#5a3818"/>
+                  <ellipse cx="343" cy="33" rx="3.5" ry="5.5" fill="#5a3818"/>
+                  <circle cx="330" cy="42" r="2.5" fill="#d09060"/>
+                  <circle cx="342" cy="42" r="2.5" fill="#d09060"/>
+                  <circle cx="333" cy="40" r="2" fill="rgba(255,255,255,0.9)"/>
+                  <circle cx="339" cy="40" r="2" fill="rgba(255,255,255,0.9)"/>
+                  <path d="M332 45 Q336 49 340 45" stroke="#c06848" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                  <rect x="326" y="52" width="20" height="12" rx="5" fill="#4a6aaf"/>
+                  <text x="336" y="92" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" fill="rgba(255,255,255,0.9)">The child</text>
+                  <text x="336" y="106" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,255,255,0.4)">Responds to it</text>
+                </g>
+
+                <!-- ── NODE 5: Action ── cx=432 -->
+                <g id="dn5" class="diag-node dim" onclick="diagJumpTo(5)" style="cursor:pointer;">
+                  <circle id="dn5-ring" cx="432" cy="48" r="34" fill="none" stroke="#4aaa62" stroke-width="1.5" opacity="0"/>
+                  <circle id="dn5-bg" cx="432" cy="48" r="28" fill="#243d2e"/>
+                  <!-- Watering can icon — clean geometric -->
+                  <rect x="420" y="43" width="20" height="14" rx="4" fill="#5dc87a"/>
+                  <ellipse cx="430" cy="41.5" rx="6" ry="3.5" fill="#4aaa62"/>
+                  <path d="M440 48 Q448 46 451 53" stroke="#5dc87a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                  <!-- drops -->
+                  <circle cx="452" cy="57" r="1.5" fill="#6ac8f0" opacity="0.9"><animate attributeName="cy" values="55;62" dur="1s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.9;0" dur="1s" repeatCount="indefinite"/></circle>
+                  <circle cx="448" cy="59" r="1.2" fill="#6ac8f0" opacity="0.7"><animate attributeName="cy" values="57;64" dur="1s" begin="0.3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.7;0" dur="1s" begin="0.3s" repeatCount="indefinite"/></circle>
+                  <text x="432" y="92" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" fill="rgba(255,255,255,0.9)">Takes action</text>
+                  <text x="432" y="106" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,255,255,0.4)">Water, light…</text>
+                </g>
+
+              </svg>
+
+              <!-- Info strip (dark themed) -->
+              <div id="diag-info" style="display:none;margin-top:14px;padding:12px 14px;background:rgba(255,255,255,0.06);border-radius:8px;font-size:13px;color:rgba(255,255,255,0.82);line-height:1.75;font-family:'DM Sans',sans-serif;"></div>
+
+              <!-- Progress bar -->
+              <div id="diag-progress" style="display:none;margin-top:10px;">
+                <div style="height:1.5px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+                  <div id="diag-pfill" style="height:100%;background:#4aaa62;border-radius:2px;width:0%;transition:width linear;"></div>
+                </div>
+              </div>
+
+            </div>
+            <!-- end diagram -->
+
+
+
+            <!-- Connector quote -->
+            <div style="border-left:3px solid #4aaa62;background-color:#edf4ef;padding:14px 16px;font-size:13px;color:#2a4a38;line-height:1.7;border-radius:0 8px 8px 0;margin-bottom:26px;">
+              The character tells the child what the plant needs. The child decides what to do. That moment — noticing, deciding, acting — is where the emotional development happens. No automation. No self-watering. <strong style="font-weight:500;color:#1a3a2a;">The child is the caregiver.</strong>
+            </div>
+
+
+            <table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;margin-bottom:28px;">
+              <tr>
+                <td style="background-color:#f4f1ec;border:1px solid #ddd8d0;border-radius:8px;padding:12px 16px;font-size:12px;color:#6a5a4a;line-height:1.65;">
+                  <strong style="color:#3a2a1a;font-weight:500;">Good to know:</strong> The plant is yours — anything already at home works. The character is a physical toy, not a screen. The sensor connects the two.
+                </td>
+              </tr>
+            </table>
+
+            <!-- Divider -->
+            <table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;margin-bottom:24px;">
+              <tr><td style="height:1px;background-color:#e4e0da;font-size:0;line-height:0;">&nbsp;</td></tr>
+            </table>
+
+            <!-- ── SURVEY CTA ── -->
+            <div style="font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#8a9e94;margin-bottom:8px;">Parent survey</div>
+            <div style="font-family:'DM Serif Display',serif;font-size:20px;color:#1a3a2a;line-height:1.3;margin-bottom:8px;">We appreciate your input.</div>
+            <p style="font-size:13px;color:#6a7a6e;line-height:1.7;margin:0 0 22px;">10 questions. Anonymous. No account needed. We're using responses to decide what to build and what to leave out.</p>
+
+            <table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;margin-bottom:8px;">
+              <tr>
+                <td style="text-align:center;">
+                  <!-- CHANGE 7: warmer CTA copy -->
+                  <a href="https://www.surveymonkey.com/share/f19cf708-070d-448c-b851-94070de12d8a" class="cta-btn" style="display:inline-block;background:linear-gradient(135deg,#e8187a 0%,#c4108e 50%,#a010a8 100%);color:#ffffff;text-decoration:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;letter-spacing:0.04em;padding:15px 44px;border-radius:100px;">Help us build it →</a>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align:center;font-size:12px;color:#9aaa9e;padding-top:10px;">Takes about 5 minutes</td>
+              </tr>
+            </table>
+
+            <!-- CHANGE 6: "What Gaia includes" moved to AFTER the CTA -->
+            <!-- It's product detail for the curious — doesn't need to block the ask -->
+            <table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;margin-top:28px;margin-bottom:4px;">
+              <tr><td style="height:1px;background-color:#e4e0da;font-size:0;line-height:0;">&nbsp;</td></tr>
+            </table>
+            <div style="font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#8a9e94;margin-top:20px;margin-bottom:12px;">What Gaia includes</div>
+
+            <table class="box-grid" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:separate;border-spacing:0;margin-bottom:4px;">
+              <tr>
+                <!-- Wireless sensor -->
+                <td class="box-card" style="width:50%;vertical-align:top;padding:0 5px 10px 0;">
+                  <table cellpadding="0" cellspacing="0" style="width:100%;height:100%;border-collapse:collapse;background-color:#eef2ee;border-radius:10px;">
+                    <tr><td style="padding:16px;vertical-align:top;">
+                      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;margin-bottom:10px;">
+                        <!-- probe body -->
+                        <rect x="12" y="12" width="4" height="12" rx="2" fill="#1a3a2a"/>
+                        <!-- tip dot -->
+                        <circle cx="14" cy="11" r="3" fill="#1a3a2a"/>
+                        <circle cx="14" cy="11" r="1.5" fill="#eef2ee"/>
+                        <!-- signal arcs -->
+                        <path d="M18 8 Q22 4 26 8" stroke="#1a3a2a" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.9"/>
+                        <path d="M19.5 5.5 Q22 1 24.5 5.5" stroke="#1a3a2a" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.5"/>
+                        <!-- soil line -->
+                        <rect x="6" y="23" width="16" height="2" rx="1" fill="#1a3a2a" opacity="0.25"/>
+                      </svg>
+                      <div style="font-size:12px;font-weight:600;color:#1a3a2a;margin-bottom:4px;">Wireless sensor</div>
+                      <div style="font-size:11px;color:#4a6a55;line-height:1.6;">Goes in the soil. Reads moisture, light, and temperature.</div>
+                    </td></tr>
+                  </table>
+                </td>
+                <!-- Character toy -->
+                <td class="box-card" style="width:50%;vertical-align:top;padding:0 0 10px 5px;">
+                  <table cellpadding="0" cellspacing="0" style="width:100%;height:100%;border-collapse:collapse;background-color:#eef2ee;border-radius:10px;">
+                    <tr><td style="padding:16px;vertical-align:top;">
+                      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;margin-bottom:10px;">
+                        <!-- ears -->
+                        <ellipse cx="6" cy="13" rx="3" ry="4.5" fill="#1a3a2a" opacity="0.3"/>
+                        <ellipse cx="22" cy="13" rx="3" ry="4.5" fill="#1a3a2a" opacity="0.3"/>
+                        <!-- head -->
+                        <rect x="7" y="7" width="14" height="14" rx="5" fill="#1a3a2a"/>
+                        <!-- eyes -->
+                        <circle cx="11" cy="13" r="1.8" fill="#eef2ee"/>
+                        <circle cx="17" cy="13" r="1.8" fill="#eef2ee"/>
+                        <!-- smile -->
+                        <path d="M10.5 17 Q14 19.5 17.5 17" stroke="#eef2ee" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                        <!-- status bar -->
+                        <rect x="10" y="22" width="8" height="2" rx="1" fill="#1a3a2a" opacity="0.4"/>
+                      </svg>
+                      <div style="font-size:12px;font-weight:600;color:#1a3a2a;margin-bottom:4px;">Character toy</div>
+                      <div style="font-size:11px;color:#4a6a55;line-height:1.6;">Sits on a shelf. Face + lights react to the sensor. <em style="color:#7a6a4a;">Plant not included.</em></div>
+                    </td></tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <!-- Companion app -->
+                <td class="box-card" style="width:50%;vertical-align:top;padding:0 5px 0 0;">
+                  <table cellpadding="0" cellspacing="0" style="width:100%;height:100%;border-collapse:collapse;background-color:#eef2ee;border-radius:10px;">
+                    <tr><td style="padding:16px;vertical-align:top;">
+                      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;margin-bottom:10px;">
+                        <!-- phone outline -->
+                        <rect x="8" y="3" width="12" height="22" rx="3" fill="#1a3a2a"/>
+                        <!-- screen -->
+                        <rect x="10" y="6" width="8" height="13" rx="1.5" fill="#eef2ee"/>
+                        <!-- home button -->
+                        <circle cx="14" cy="22" r="1.5" fill="#eef2ee" opacity="0.5"/>
+                        <!-- leaf on screen -->
+                        <ellipse cx="14" cy="10" rx="2.5" ry="3.5" fill="#1a3a2a" opacity="0.35"/>
+                        <line x1="14" y1="13" x2="14" y2="16" stroke="#1a3a2a" stroke-width="1" opacity="0.4" stroke-linecap="round"/>
+                      </svg>
+                      <div style="font-size:12px;font-weight:600;color:#1a3a2a;margin-bottom:4px;">Companion app</div>
+                      <div style="font-size:11px;color:#4a6a55;line-height:1.6;">Plant guides for parents, plus a nature journal and discovery features built for kids.</div>
+                    </td></tr>
+                  </table>
+                </td>
+                <!-- Coloring book -->
+                <td class="box-card" style="width:50%;vertical-align:top;padding:0 0 0 5px;">
+                  <table cellpadding="0" cellspacing="0" style="width:100%;height:100%;border-collapse:collapse;background-color:#eef2ee;border-radius:10px;">
+                    <tr><td style="padding:16px;vertical-align:top;">
+                      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;margin-bottom:10px;">
+                        <!-- book pages -->
+                        <rect x="5" y="4" width="10" height="20" rx="2" fill="#1a3a2a" opacity="0.2"/>
+                        <rect x="7" y="4" width="10" height="20" rx="2" fill="#1a3a2a" opacity="0.35"/>
+                        <rect x="9" y="4" width="10" height="20" rx="2" fill="#1a3a2a"/>
+                        <!-- spine line -->
+                        <line x1="9" y1="4" x2="9" y2="24" stroke="#eef2ee" stroke-width="1" opacity="0.3"/>
+                        <!-- pencil lines on page -->
+                        <line x1="12" y1="10" x2="17" y2="10" stroke="#eef2ee" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+                        <line x1="12" y1="13" x2="17" y2="13" stroke="#eef2ee" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+                        <line x1="12" y1="16" x2="15" y2="16" stroke="#eef2ee" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
+                      </svg>
+                      <div style="font-size:12px;font-weight:600;color:#1a3a2a;margin-bottom:4px;">Coloring book</div>
+                      <div style="font-size:11px;color:#4a6a55;line-height:1.6;">Features all 10 Gaia characters. <em style="color:#7a6a6a;">Included in gift set.</em></div>
+                    </td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+
+        <!-- ── FOOTER ── -->
+        <tr>
+          <td class="footer-td" style="background-color:#f0ede8;border-top:1px solid #ddd8d2;padding:18px 40px;border-radius:0 0 15px 15px;">
+            <span style="font-size:12px;color:#4a6a55;line-height:1.6;font-weight:500;">Ontario parents of children aged 4–10 only.</span>
+            <span style="font-size:11px;color:#8a9e94;line-height:1.6;"> Responses are fully anonymous.</span>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+<script>
+(function() {
+  var STEP_DUR  = 2200;
+  var HOLD_LAST = 2800;
+
+  // cx positions of each node in the SVG (kept for reference)
+  var NODE_CX = { 1:48, 2:144, 3:240, 4:336, 5:432 };
+
+  var infos = {
+    1: 'Any plant you already own. No special purchase needed — the sensor works with whatever is on your windowsill.',
+    2: '<strong style="color:#a8e6b8;">The sensor</strong> sits in the soil and quietly tracks moisture, light, and temperature. No screens. No notifications to parents.',
+    3: '<strong style="color:#a8e6b8;">The character</strong> changes — its face shifts, its light changes colour. The plant is speaking. The child just has to look.',
+    4: 'The child sees the character and feels something. <strong style="color:#a8e6b8;">They decide what the plant needs.</strong> That moment of noticing is the whole point.',
+    5: 'The child acts. No app prompt. No reminder. Just a kid and a plant and a small act of care. <strong style="color:#a8e6b8;">Then the loop begins again.</strong>'
+  };
+
+  var current = 0;
+  var playing = true;
+  var timer   = null;
+
+  function g(id) { return document.getElementById(id); }
+
+  var SEGMENTS = ['da-12','da-23','da-34','da-45'];
+
+  function setTrack(toStep) {
+    // Light segments 1 through (toStep-1)
+    for (var s = 0; s < 4; s++) {
+      var el = g(SEGMENTS[s]);
+      if (el) el.setAttribute('opacity', s < toStep - 1 ? '1' : '0');
+    }
+  }
+
+  function showStep(n, animate) {
+    current = n;
+
+    for (var i = 1; i <= 5; i++) {
+      var node = g('dn' + i);
+      var bg   = g('dn' + i + '-bg');
+      var ring = g('dn' + i + '-ring');
+      if (!node) continue;
+
+      node.classList.remove('dim','lit','idle','diag-node-pop');
+
+      if (i < n) {
+        node.classList.add('idle');
+        if (bg)   bg.setAttribute('fill', '#2a4a34');
+        if (ring) ring.setAttribute('opacity', '0');
+      } else if (i === n) {
+        node.classList.add('lit');
+        if (bg)   bg.setAttribute('fill', '#1f5c38');
+        if (ring) { ring.setAttribute('opacity', '1'); }
+        if (animate) { void node.offsetWidth; node.classList.add('diag-node-pop'); }
+      } else {
+        node.classList.add('dim');
+        if (bg)   bg.setAttribute('fill', '#243d2e');
+        if (ring) ring.setAttribute('opacity', '0');
+      }
+    }
+
+    setTrack(n);
+
+    var info = g('diag-info');
+    if (info) { info.style.display = 'block'; info.innerHTML = infos[n]; }
+  }
+
+  function startProgress(dur) {
+    var bar  = g('diag-progress');
+    var fill = g('diag-pfill');
+    if (!fill) return;
+    if (bar) bar.style.display = 'block';
+    fill.style.transition = 'none';
+    fill.style.width = '0%';
+    void fill.offsetWidth;
+    fill.style.transition = 'width ' + dur + 'ms linear';
+    fill.style.width = '100%';
+  }
+
+  function scheduleNext() {
+    if (!playing) return;
+    var next = (current % 5) + 1;
+    var dur  = (next === 1) ? HOLD_LAST : STEP_DUR;
+    startProgress(dur);
+    timer = setTimeout(function() {
+      showStep(next, true);
+      scheduleNext();
+    }, dur);
+  }
+
+  window.diagJumpTo = function(n) {
+    clearTimeout(timer);
+    showStep(n, true);
+    if (playing) scheduleNext();
+  };
+
+  window.diagTogglePlay = function() {
+    playing = !playing;
+    var icon  = g('diag-play-icon');
+    var label = g('diag-play-label');
+    var fill  = g('diag-pfill');
+    var bar   = g('diag-progress');
+    if (playing) {
+      if (icon)  icon.innerHTML = '<rect x="2" y="1" width="2.5" height="8"/><rect x="5.5" y="1" width="2.5" height="8"/>';
+      if (label) label.textContent = 'Pause';
+      scheduleNext();
+    } else {
+      clearTimeout(timer);
+      if (fill) { fill.style.transition = 'none'; fill.style.width = '0%'; }
+      if (bar)  bar.style.display = 'none';
+      if (icon)  icon.innerHTML = '<polygon points="2,1 9,5 2,9"/>';
+      if (label) label.textContent = 'Play';
+    }
+  };
+
+  function init() {
+    showStep(1, false);
+    scheduleNext();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+</body>
+</html>
